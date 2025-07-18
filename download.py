@@ -23,6 +23,12 @@ def get_chrome_options(download_dir):
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--disable-extensions")
+    chrome_options.add_argument("--disable-plugins")
+    chrome_options.add_argument("--disable-images")
+    chrome_options.add_argument("--disable-web-security")
+    chrome_options.add_argument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36")
 
     prefs = {
         "download.default_directory": os.path.abspath(download_dir),
@@ -39,7 +45,7 @@ def download_file(url, download_dir):
         driver = webdriver.Chrome(options=chrome_options)
         
         driver.get(url)
-        time.sleep(4)
+        time.sleep(2)
         
         download_button = driver.find_element(By.XPATH, "//a[contains(@class, 'link-button') and contains(text(), 'Download')]")
         
@@ -104,6 +110,6 @@ while True:
     i += 1
 
 # Xóa lần cuối và kiểm tra dung lượng cuối cùng
-time.sleep(3)
+time.sleep(1.5)
 clear_download_directory(download_dir)
 check_disk_space(download_dir)
