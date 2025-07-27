@@ -39,7 +39,7 @@ def download_file(url, download_dir):
         driver = webdriver.Chrome(options=chrome_options)
         
         driver.get(url)
-        time.sleep(3)
+        time.sleep(3.5)
         
         download_button = driver.find_element(By.XPATH, "//a[contains(@class, 'link-button') and contains(text(), 'Download')]")
         
